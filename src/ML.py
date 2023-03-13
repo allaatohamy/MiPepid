@@ -78,6 +78,7 @@ def load_model(model_fname = './src/model/XGboost'):
   f = open(model_fname, 'rb')
   logr = pickle.load(f)
   threshold = pickle.load(f)
+  threshold=0.6
   f.close()
   return logr, threshold
 
