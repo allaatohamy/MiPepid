@@ -68,7 +68,7 @@ class kmer_featurization:
 
     return numbering
 
-def predict(logr, X, threshold):
+def predict(logr, X, threshold=0.6):
   y_pred_score = logr.predict_proba(X)[:,1]
   y_pred = (y_pred_score > threshold) + 0
   y_prob = abs(1 - y_pred - y_pred_score)  # the probability that an instance is in the assigned category
@@ -77,9 +77,9 @@ def predict(logr, X, threshold):
 def load_model(model_fname = './src/model/XGboost'):
   f = open(model_fname, 'rb')
   logr = pickle.load(f)
-  threshold = pickle.load(f)
+  
   threshold=0.6
-  f.close()
+  
   return logr, threshold
 
 def predict_on_one_batch_and_write(sORFs, logr, threshold, output_fname, k=4):
