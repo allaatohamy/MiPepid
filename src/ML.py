@@ -77,8 +77,10 @@ def predict(logr, X, threshold):
 def load_model(model_fname = './src/model/XGboost.pkl'):
   f = open(model_fname, 'rb')
   logr = pickle.load(f)
-  threshold = pickle.load(f)
-  f.close()
+  threshold=0.6
+#   threshold = pickle.load(f)
+#   f.close()
+
   return logr, threshold
 
 def predict_on_one_batch_and_write(sORFs, logr, threshold, output_fname, k=4):
