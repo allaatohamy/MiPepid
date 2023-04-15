@@ -99,5 +99,5 @@ def predict_on_one_batch_and_write(sORFs, logr, threshold, output_fname, k=4):
     df['classification'] = 'Not classified'
   else:
     df['classification'] = [class_dic[x] for x in y_pred]
-  df['probability'] = y_prob
+    df['probability'] = y_prob
   df.to_csv(output_fname, header=False, index=False, mode='a')
